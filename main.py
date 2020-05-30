@@ -1,8 +1,8 @@
-from funcions import *
-import sqlite3
+from functions import *
+#import sqlite3
 
 nome_eletronico = input("Digite o nome do equipamento: ")
-equipamento_potencia = int(input("Digite a potência do equipamento: "))
+equipamento_potencia = float(input("Digite a potência do equipamento: "))
 
 obj_telefone = Eletronico(nome_eletronico, equipamento_potencia)
 
