@@ -1,3 +1,5 @@
+from banco import *
+
 class Eletronico:
 
     def __init__(self, nome, watts):
@@ -27,5 +29,32 @@ class Eletronico:
         aparelho = kwh(self.__watts)
         return aparelho * self.__kwh_preco
 
+
+
+def add_aparelho():
+    nome_eletronico = input("Digite o nome do equipamento: ")
+    equipamento_potencia = float(input("Digite a potência do equipamento: "))
+
+    return Eletronico(nome_eletronico, equipamento_potencia)
+
+def get_preco_atual(obj_aparelho):
+
+    print(f"O preço atual do KMH é de: R${obj_aparelho.getKwh_preco()}")
+    alterar_preco_kwh = input("Alterar preço do KWH? [s/n] : ").lower()
+    if alterar_preco_kwh == "s":
+        kwh_preco = float(input("Digite o preço do kwh: "))
+        obj_aparelho.setKwh_preco(kwh_preco)
+
+
+def colocar_tela(obj_aparelho):
+    produto = obj_aparelho.getNome()
+    valor_kwh = obj_aparelho.preco_hora()
+    return "\n %s - Custa R$ %.2f por hora" % (produto, valor_kwh)
+
+def inicial():
+    objt = add_aparelho()
+    get_preco_atual(objt)
+    tela = colocar_tela(objt)
+    print(tela)
 
 kwh = lambda a: a / 1000
